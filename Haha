@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>System Alert</title>
+</head>
+
+<body style="
+  background:black;
+  color:red;
+  font-family:monospace;
+  overflow:hidden;
+">
+
+<div id="text"></div>
+
+<script>
+// ТРЯСКА ЭКРАНА
+let shakes = 0;
+let shakeInterval = setInterval(() => {
+  document.body.style.transform =
+    translate(${Math.random()*15 - 7}px, ${Math.random()*15 - 7}px);
+  shakes++;
+  if (shakes > 60) {
+    clearInterval(shakeInterval);
+    document.body.style.transform = "none";
+  }
+}, 50);
+
+// СПАМ ТЕКСТА
+let count = 0;
+let text = document.getElementById("text");
+
+let spamInterval = setInterval(() => {
+  if (count < 40) {
+    text.innerHTML += "<p>HAHAHAHAHAHA 😂</p>";
+    window.scrollTo(0, document.body.scrollHeight);
+    count++;
+  } else {
+    text.innerHTML += "<h2 style='color:lime'>Relax 😄 It’s just a prank</h2>";
+    clearInterval(spamInterval);
+  }
+}, 120);
+</script>
+
+</body>
+</html>
